@@ -6,12 +6,15 @@
  qubit c
  qubit x
  qubit y
- qubit z1,0
- qubit z2,0
+ qubit g1,0
+ qubit g2,0
 
- toffoli       x,y,z2
- toffoli       c,x,z2
- toffoli       c,y,z2
- cnot          c,z1
- cnot          x,z1
- cnot          y,z1
+ nop           c
+ nop           x
+ nop           y
+ toffoli       x,y,g2
+ toffoli       c,x,g2
+ toffoli       c,y,g2
+ cnot          c,g1
+ cnot          x,g1
+ cnot          y,g1

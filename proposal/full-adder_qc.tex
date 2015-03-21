@@ -6,83 +6,93 @@
 %  qubit c
 %  qubit x
 %  qubit y
-%  qubit z1,0
-%  qubit z2,0
+%  qubit g1,0
+%  qubit g2,0
 % 
-%  toffoli       x,y,z2
-%  toffoli       c,x,z2
-%  toffoli       c,y,z2
-%  cnot          c,z1
-%  cnot          x,z1
-%  cnot          y,z1
+%  nop           c
+%  nop           x
+%  nop           y
+%  toffoli       x,y,g2
+%  toffoli       c,x,g2
+%  toffoli       c,y,g2
+%  cnot          c,g1
+%  cnot          x,g1
+%  cnot          y,g1
 
 %  Time 01:
-%    Gate 00 toffoli(x,y,z2)
+%    Gate 00 nop(c)
+%    Gate 01 nop(x)
+%    Gate 02 nop(y)
 %  Time 02:
-%    Gate 01 toffoli(c,x,z2)
+%    Gate 03 toffoli(x,y,g2)
 %  Time 03:
-%    Gate 02 toffoli(c,y,z2)
+%    Gate 04 toffoli(c,x,g2)
 %  Time 04:
-%    Gate 03 cnot(c,z1)
+%    Gate 05 toffoli(c,y,g2)
 %  Time 05:
-%    Gate 04 cnot(x,z1)
+%    Gate 06 cnot(c,g1)
 %  Time 06:
-%    Gate 05 cnot(y,z1)
+%    Gate 07 cnot(x,g1)
+%  Time 07:
+%    Gate 08 cnot(y,g1)
 
 % Qubit circuit matrix:
 %
-% c: n  , gBxA, gCxA, gDxA, n  , n  , n  
-% x: gAxB, gBxB, n  , n  , gExB, n  , n  
-% y: gAxC, n  , gCxC, n  , n  , gFxC, n  
-% z1: n  , n  , n  , gDxD, gExD, gFxD, n  
-% z2: gAxE, gBxE, gCxE, n  , n  , n  , n  
+% c: gAxA, n  , gCxA, gDxA, gExA, n  , n  , n  
+% x: gAxB, gBxB, gCxB, n  , n  , gFxB, n  , n  
+% y: gAxC, gBxC, n  , gDxC, n  , n  , gGxC, n  
+% g1: n  , n  , n  , n  , gExD, gFxD, gGxD, n  
+% g2: n  , gBxE, gCxE, gDxE, n  , n  , n  , n  
 
 \documentclass[11pt]{article}
 \input{xyqcirc.tex}
 
 % definitions for the circuit elements
 
-\def\gAxB{\b\w\A{gAxB}}
-\def\gAxC{\b\w\A{gAxC}}
-\def\gAxE{\o\w\A{gAxE}}
-\def\gBxA{\b\w\A{gBxA}}
+\def\gAxA{*-{}\w\A{gAxA}}
+\def\gAxB{*-{}\w\A{gAxB}}
+\def\gAxC{*-{}\w\A{gAxC}}
 \def\gBxB{\b\w\A{gBxB}}
+\def\gBxC{\b\w\A{gBxC}}
 \def\gBxE{\o\w\A{gBxE}}
 \def\gCxA{\b\w\A{gCxA}}
-\def\gCxC{\b\w\A{gCxC}}
+\def\gCxB{\b\w\A{gCxB}}
 \def\gCxE{\o\w\A{gCxE}}
 \def\gDxA{\b\w\A{gDxA}}
-\def\gDxD{\o\w\A{gDxD}}
-\def\gExB{\b\w\A{gExB}}
+\def\gDxC{\b\w\A{gDxC}}
+\def\gDxE{\o\w\A{gDxE}}
+\def\gExA{\b\w\A{gExA}}
 \def\gExD{\o\w\A{gExD}}
-\def\gFxC{\b\w\A{gFxC}}
+\def\gFxB{\b\w\A{gFxB}}
 \def\gFxD{\o\w\A{gFxD}}
+\def\gGxC{\b\w\A{gGxC}}
+\def\gGxD{\o\w\A{gGxD}}
 
 % definitions for bit labels and initial states
 
 \def\bA{ \q{c}}
 \def\bB{ \q{x}}
 \def\bC{ \q{y}}
-\def\bD{\qv{z_{1}}{0}}
-\def\bE{\qv{z_{2}}{0}}
+\def\bD{\qv{g_{1}}{0}}
+\def\bE{\qv{g_{2}}{0}}
 
 % The quantum circuit as an xymatrix
 
 \xymatrix@R=5pt@C=10pt{
-    \bA & \n   &\gBxA &\gCxA &\gDxA &\n   &\n   &\n  
-\\  \bB & \gAxB &\gBxB &\n   &\n   &\gExB &\n   &\n  
-\\  \bC & \gAxC &\n   &\gCxC &\n   &\n   &\gFxC &\n  
-\\  \bD & \n   &\n   &\n   &\gDxD &\gExD &\gFxD &\n  
-\\  \bE & \gAxE &\gBxE &\gCxE &\n   &\n   &\n   &\n  
+    \bA & \gAxA &\n   &\gCxA &\gDxA &\gExA &\n   &\n   &\n  
+\\  \bB & \gAxB &\gBxB &\gCxB &\n   &\n   &\gFxB &\n   &\n  
+\\  \bC & \gAxC &\gBxC &\n   &\gDxC &\n   &\n   &\gGxC &\n  
+\\  \bD & \n   &\n   &\n   &\n   &\gExD &\gFxD &\gGxD &\n  
+\\  \bE & \n   &\gBxE &\gCxE &\gDxE &\n   &\n   &\n   &\n  
 %
 % Vertical lines and other post-xymatrix latex
 %
-\ar@{-}"gAxE";"gAxB"\ar@{-}"gAxE";"gAxC"
-\ar@{-}"gBxE";"gBxA"\ar@{-}"gBxE";"gBxB"
-\ar@{-}"gCxE";"gCxA"\ar@{-}"gCxE";"gCxC"
-\ar@{-}"gDxD";"gDxA"
-\ar@{-}"gExD";"gExB"
-\ar@{-}"gFxD";"gFxC"
+\ar@{-}"gBxE";"gBxB"\ar@{-}"gBxE";"gBxC"
+\ar@{-}"gCxE";"gCxA"\ar@{-}"gCxE";"gCxB"
+\ar@{-}"gDxE";"gDxA"\ar@{-}"gDxE";"gDxC"
+\ar@{-}"gExD";"gExA"
+\ar@{-}"gFxD";"gFxB"
+\ar@{-}"gGxD";"gGxC"
 }
 
 \end{document}
