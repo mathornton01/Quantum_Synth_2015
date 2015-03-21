@@ -1,4 +1,4 @@
--Proposal: Explaination of the problem, what kind of problem, survey of similar of background previous work, Gatt Chart, References and Citations,
+-Proposal: Explaination of the problem, what kind of problem, survey of similar  background previous work, Gantt Chart, References and Citations,
 -Powerpoint: 5 or less slides outlining proposal. 
 
 
