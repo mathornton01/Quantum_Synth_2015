@@ -3,8 +3,8 @@
 # Date: March 21 2015
 # Authors: Josh Rendon, Micah Thornton
 #
- def not,0,'$\oplus$'
- def toffoli4,3,'$\oplus$'
+ def not,0,'\oplus'
+ def toffoli4,3,'\oplus'
 
  qubit in4
  qubit in3
