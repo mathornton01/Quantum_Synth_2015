@@ -1,4 +1,6 @@
 \documentclass{report}
+\usepackage{graphicx}
+\usepackage[frame,line,arrow,matrix,tips]{xy}	% all that is usually necessary
 \title {\author{ Josh Rendon, Micah Thornton} Proposal for Quantum Reversible Synthesis}
 
 \begin{document}
@@ -12,5 +14,9 @@ Unfortunately, <computationally efficient> methods do not currently exist to det
 We propose the implementation of a software synthesis tool based on current work in the literature to determine if a classical circuit is a mathematical bijection.
 If this circuit is synthesizable as a quantum cascade with no garbage outputs and no ancillia inputs then we know the circuit is logically reversible and is a bijection.
 \section{ }
+\input{4-bit_circular_qc.tex}
+\begin{figure}
+  \includegraphics{figures/4-bit_circular_hash_schematic.PNG}
+\end{figure}
 
 \end{document}
