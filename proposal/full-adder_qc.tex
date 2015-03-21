@@ -1,0 +1,88 @@
+% 
+% File: full-adder_qc.qasm
+% Date: March 21 2015
+% Authors: Josh Rendon, Micah Thornton
+%
+%  qubit c
+%  qubit x
+%  qubit y
+%  qubit z1,0
+%  qubit z2,0
+% 
+%  toffoli       x,y,z2
+%  toffoli       c,x,z2
+%  toffoli       c,y,z2
+%  cnot          c,z1
+%  cnot          x,z1
+%  cnot          y,z1
+
+%  Time 01:
+%    Gate 00 toffoli(x,y,z2)
+%  Time 02:
+%    Gate 01 toffoli(c,x,z2)
+%  Time 03:
+%    Gate 02 toffoli(c,y,z2)
+%  Time 04:
+%    Gate 03 cnot(c,z1)
+%  Time 05:
+%    Gate 04 cnot(x,z1)
+%  Time 06:
+%    Gate 05 cnot(y,z1)
+
+% Qubit circuit matrix:
+%
+% c: n  , gBxA, gCxA, gDxA, n  , n  , n  
+% x: gAxB, gBxB, n  , n  , gExB, n  , n  
+% y: gAxC, n  , gCxC, n  , n  , gFxC, n  
+% z1: n  , n  , n  , gDxD, gExD, gFxD, n  
+% z2: gAxE, gBxE, gCxE, n  , n  , n  , n  
+
+\documentclass[11pt]{article}
+\input{xyqcirc.tex}
+
+% definitions for the circuit elements
+
+\def\gAxB{\b\w\A{gAxB}}
+\def\gAxC{\b\w\A{gAxC}}
+\def\gAxE{\o\w\A{gAxE}}
+\def\gBxA{\b\w\A{gBxA}}
+\def\gBxB{\b\w\A{gBxB}}
+\def\gBxE{\o\w\A{gBxE}}
+\def\gCxA{\b\w\A{gCxA}}
+\def\gCxC{\b\w\A{gCxC}}
+\def\gCxE{\o\w\A{gCxE}}
+\def\gDxA{\b\w\A{gDxA}}
+\def\gDxD{\o\w\A{gDxD}}
+\def\gExB{\b\w\A{gExB}}
+\def\gExD{\o\w\A{gExD}}
+\def\gFxC{\b\w\A{gFxC}}
+\def\gFxD{\o\w\A{gFxD}}
+
+% definitions for bit labels and initial states
+
+\def\bA{ \q{c}}
+\def\bB{ \q{x}}
+\def\bC{ \q{y}}
+\def\bD{\qv{z_{1}}{0}}
+\def\bE{\qv{z_{2}}{0}}
+
+% The quantum circuit as an xymatrix
+
+\xymatrix@R=5pt@C=10pt{
+    \bA & \n   &\gBxA &\gCxA &\gDxA &\n   &\n   &\n  
+\\  \bB & \gAxB &\gBxB &\n   &\n   &\gExB &\n   &\n  
+\\  \bC & \gAxC &\n   &\gCxC &\n   &\n   &\gFxC &\n  
+\\  \bD & \n   &\n   &\n   &\gDxD &\gExD &\gFxD &\n  
+\\  \bE & \gAxE &\gBxE &\gCxE &\n   &\n   &\n   &\n  
+%
+% Vertical lines and other post-xymatrix latex
+%
+\ar@{-}"gAxE";"gAxB"\ar@{-}"gAxE";"gAxC"
+\ar@{-}"gBxE";"gBxA"\ar@{-}"gBxE";"gBxB"
+\ar@{-}"gCxE";"gCxA"\ar@{-}"gCxE";"gCxC"
+\ar@{-}"gDxD";"gDxA"
+\ar@{-}"gExD";"gExB"
+\ar@{-}"gFxD";"gFxC"
+}
+
+\end{document}
