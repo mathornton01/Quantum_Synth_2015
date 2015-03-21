@@ -3,8 +3,8 @@
 % Date: March 21 2015
 % Authors: Josh Rendon, Micah Thornton
 %
-%  def not,0,'oplus'
-%  def toffoli4,3,'oplus'
+%  def not,0,'$\oplus$'
+%  def toffoli4,3,'$\oplus$'
 % 
 %  qubit in4
 %  qubit in3
@@ -32,6 +32,7 @@
 % in2: gAxC, gBxC, n  , n  , n  
 % in1: gAxD, n  , n  , n  , n  
 
+\documentclass[11pt]{article}
 \input{xyqcirc.tex}
 
 % definitions for the circuit elements
@@ -39,13 +40,13 @@
 \def\gAxA{\b\w\A{gAxA}}
 \def\gAxB{\b\w\A{gAxB}}
 \def\gAxC{\b\w\A{gAxC}}
-\def\gAxD{\op{oplus}\w\A{gAxD}}
+\def\gAxD{\op{$\oplus$}\w\A{gAxD}}
 \def\gBxA{\b\w\A{gBxA}}
 \def\gBxB{\b\w\A{gBxB}}
 \def\gBxC{\o\w\A{gBxC}}
 \def\gCxA{\b\w\A{gCxA}}
 \def\gCxB{\o\w\A{gCxB}}
-\def\gDxA{\op{oplus}\w\A{gDxA}}
+\def\gDxA{\op{$\oplus$}\w\A{gDxA}}
 
 % definitions for bit labels and initial states
 
