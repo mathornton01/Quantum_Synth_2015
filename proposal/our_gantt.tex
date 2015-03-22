@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{pgfgantt}
+\pagenumbering{gobble}
+\begin{document}
+\begin{figure}[h!]
+\centering
+\begin{ganttchart}[vgrid, 
+    hgrid, 
+    bar/.append style={fill=blue},
+    group/.append style={draw=black, fill=green},
+    x unit = 1.5 cm]{1}{7}]
+    \gantttitle{2015}{7} \\
+    \gantttitlelist{1,...,7}{1} \\
+    \ganttbar{Create Proposal}{1}{1} \\
+    \ganttbar{Read Literature}{1}{2} \\
+    \ganttbar{Design Verilog Hash}{2}{2} \\
+    \ganttgroup{Design C-Synthesis Tool}{2}{6} \\
+    \ganttbar{Parse Truth Table}{2}{3} \\
+    \ganttbar{Implement ESOP}{2}{6} \\
+    \ganttbar{Convert ESOP}{4}{6} \\
+    \ganttbar{Fix qasm generator}{5}{6}\\ 
+    \ganttbar{Test Synthesis Tool}{3}{6} \\ 
+    \ganttbar{Collect Data}{6}{7} \\ 
+    \ganttbar{Write Report}{7}{7} \\
+\end{ganttchart}
+\end{figure}
+\end{document}
