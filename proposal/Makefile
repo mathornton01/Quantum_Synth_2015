@@ -1,6 +1,8 @@
 all: main.pdf 
 
 main.pdf: main.tex 
-	pdflatex main.tex
+	sh make.sh
+
+
 clean: main.pdf
 	rm main.pdf
