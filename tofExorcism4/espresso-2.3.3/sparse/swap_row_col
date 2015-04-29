@@ -1,0 +1,1 @@
+sed 's/row/xyzzy/g' | sed 's/col/row/g'	| sed 's/xyzzy/col/g'

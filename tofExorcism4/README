@@ -1,0 +1,38 @@
+Josh Rendon, 4/17/2015
+
+Requirements: 
+  espresso-2.3.3
+  cudd-2.3.1
+  ctags
+  linux with gcc
+
+Compilation directions:
+  Software libraries must be built in this order:
+  1. espresso-2.3.3
+  2. cudd-2.3.1
+  3. extra14
+  4. exorcism4 with ESOP synth modifications
+
+  cd espresso-2.3.3
+  make
+  cd ../cudd-2.3.1
+  make
+  cd ../extra14
+  make
+  cd exorn
+  make
+
+----------------------------------------------------------------
+Old readme text:
+----------------------------------------------------------------
+
+Mitch,
+
+This code of Exorcism-4 was prepared for Igor Markov a few months ago. It
+compiles on Unix with Extra 1.4 (attached) and Cudd 2.3.1 (to be
+downloaded). Both libraries should be compiled first and linked to the 
+project. The Makefiles are included.
+
+
+
+Alan  

@@ -1,0 +1,29 @@
+make[1]: Entering directory `/home/chang/tmp/esp/examples'
+time ../espresso -t dc1 >dc1.out
+0.01user 0.00system 0:00.00elapsed 125%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (124major+14minor)pagefaults 0swaps
+time ../espresso -t mlp4 >mlp4.out
+0.21user 0.00system 0:00.21elapsed 99%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (122major+21minor)pagefaults 0swaps
+time ../espresso -t Z5xp1 >Z5xp1.out
+0.07user 0.01system 0:00.08elapsed 94%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (121major+21minor)pagefaults 0swaps
+time ../espresso -t bca >bca.out
+1.25user 0.00system 0:01.24elapsed 100%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (126major+63minor)pagefaults 0swaps
+time ../espresso -t cps >cps.out
+product term(s) span more than one line (warning only)
+1.34user 0.00system 0:01.33elapsed 100%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (142major+60minor)pagefaults 0swaps
+time ../espresso -t opa >opa.out
+product term(s) span more than one line (warning only)
+0.30user 0.00system 0:00.29elapsed 100%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (128major+40minor)pagefaults 0swaps
+time ../espresso -t ti >ti.out
+product term(s) span more than one line (warning only)
+1.61user 0.00system 0:01.61elapsed 99%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (128major+217minor)pagefaults 0swaps
+time ../espresso -t tial >tial.out
+2.73user 0.00system 0:02.73elapsed 99%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (124major+33minor)pagefaults 0swaps
+make[1]: Leaving directory `/home/chang/tmp/esp/examples'

@@ -1,0 +1,22 @@
+# EXORCISM-4 output for command line arguments: "-q2 -v0 con1.pla"
+# Minimization performed Sat Mar 31 16:58:46 2007
+# Initial statistics: Cubes = 11  Literals = 32
+# Final   statistics: Cubes = 10  Literals = 30
+# File reading and reordering time = 0.00 sec
+# Starting cover generation time   = 0.00 sec
+# Pure ESOP minimization time      = 0.00 sec
+.i 7
+.o 2
+.p 10
+.type esop
+1------ 11 x
+----1-- 01 x
+10-01-- 11 x
+11010-- 10 x
+1--00-- 10 x
+01----- 10 x
+0---0-0 01 x
+01--00- 10 x
+00----1 01 x
+0001--- 10 x
+.e

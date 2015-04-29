@@ -1,0 +1,24 @@
+#NOTE:  two sets of stats, one at the top of the file, the other at the end of file
+#first set are basic stats and esop gen time
+#second set are the toffoli cascade generation stats
+#
+#StatSetOne format: #. name in out cubes
+#StatTwoOne format: #. gates nots esopTime reorderTime notRemovalTime totalToffoliTime totalTime
+#
+#StatSetOne
+#. ../add.pla 3 2 5
+.v x0,x1,x2,x3,x4,x5,f0,f1
+.i x0,x1,x2,x3,x4,x5
+.o f0,f1
+.c 0,0
+BEGIN
+T3 x0,x2,f1
+T3 x1,x2,f0
+T3 x1,x2,f1
+T3 x0,x1,f1
+T3 x4,x5,f0
+T2 x3,f0
+END
+#
+#StatSetTwo
+#. 6 0 0.00 0.00 0.00 0.00

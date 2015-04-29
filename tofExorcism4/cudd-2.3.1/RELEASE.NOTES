@@ -1,0 +1,70 @@
+These are the main changes from release 2.3.0 to release 2.3.1 of Cudd:
+
+Fixed bugs in:
+    Cudd_bddConstrainDecomp
+    cuddUniqueConstant
+    cuddAddExistAbstractRecur, cuddAddOrAbstractRecur, and
+      cuddAddUnivAbstractRecur
+    Cudd::Transfer
+    ddSiftingAux, ddSymmSiftingAux, ddSymmSiftingConvAux,
+      cuddZddSymmSiftingAux, and cuddZddSymmSiftingConvAux
+    cuddDestroySubtables
+    util/MMalloc
+    Cudd_Support
+    Cudd_EquivDC
+    Cudd_addTriangle
+    documentation of functions with function pointers as arguments
+
+Improved:
+    Cudd_ShuffleHeap
+    cuddDestroySubtables
+    interface to ApaPrintMinterm in class ABDD of the C++ interface
+    efficiency of C++ interface by passing const CLASS& instead of
+      CLASS
+    efficiency of several ADD manipulation procedures
+
+Added:
+    functions to bind/unbind variables for sifting
+    functions for lazy sifting
+    nodeCount to class BDDvector and several other API functions
+      to the C++ interface
+    library for extended precision
+    Path enumerator for ZDDs
+
+
+int Cudd_bddBindVar ARGS((DdManager *dd, int index));
+int Cudd_bddUnbindVar ARGS((DdManager *dd, int index));
+int Cudd_bddVarIsBound ARGS((DdManager *dd, int index));
+DdNode * Cudd_addMonadicApply ARGS((DdManager * dd, DdNode * (*op)(DdManager *, DdNode *), DdNode * f));
+DdNode * Cudd_addLog ARGS((DdManager * dd, DdNode * f));
+DdNode * Cudd_addGeneralVectorCompose ARGS((DdManager *dd, DdNode *f, DdNode **vectorOn, DdNode **vectorOff));
+DdNode * Cudd_addOuterSum ARGS((DdManager *dd, DdNode *M, DdNode *r, DdNode *c));
+DdNode * Cudd_bddClosestCube ARGS((DdManager *dd, DdNode * f, DdNode *g, int *distance));
+int Cudd_bddLeqUnless ARGS((DdManager *dd, DdNode *f, DdNode *g, DdNode *D));
+DdNode * Cudd_bddMakePrime ARGS ((DdManager *dd, DdNode *cube, DdNode *f));
+int Cudd_bddPrintCover ARGS((DdManager *dd, DdNode *l, DdNode *u));
+int Cudd_EpdCountMinterm ARGS((DdManager *manager, DdNode *node, int nvars, EpDouble *epd));
+double Cudd_CountPathsToNonZero ARGS((DdNode *node));
+int * Cudd_SupportIndex ARGS((DdManager *dd, DdNode *f));
+int * Cudd_VectorSupportIndex ARGS((DdManager *dd, DdNode **F, int n));
+DdNode * Cudd_SubsetWithMaskVars ARGS((DdManager *dd, DdNode *f, DdNode **vars, int nvars, DdNode **maskVars, int mvars));
+DdNode * Cudd_CubeArrayToBdd ARGS((DdManager *dd, int *array));
+int Cudd_BddToCubeArray ARGS((DdManager *dd, DdNode *cube, int *array));
+DdGen * Cudd_zddFirstPath ARGS((DdManager *zdd, DdNode *f, int **path));
+int Cudd_zddNextPath ARGS((DdGen *gen, int **path));
+char * Cudd_zddCoverPathToString ARGS((DdManager *zdd, int *path, char *str));
+int Cudd_bddSetPiVar ARGS((DdManager *dd, int index));
+int Cudd_bddSetPsVar ARGS((DdManager *dd, int index));
+int Cudd_bddSetNsVar ARGS((DdManager *dd, int index));
+int Cudd_bddIsPiVar ARGS((DdManager *dd, int index));
+int Cudd_bddIsPsVar ARGS((DdManager *dd, int index));
+int Cudd_bddIsNsVar ARGS((DdManager *dd, int index));
+int Cudd_bddSetPairIndex ARGS((DdManager *dd, int index, int pairIndex));
+int Cudd_bddReadPairIndex ARGS((DdManager *dd, int index));
+int Cudd_bddSetVarToBeGrouped ARGS((DdManager *dd, int index));
+int Cudd_bddSetVarHardGroup ARGS((DdManager *dd, int index));
+int Cudd_bddResetVarToBeGrouped ARGS((DdManager *dd, int index));
+int Cudd_bddIsVarToBeGrouped ARGS((DdManager *dd, int index));
+int Cudd_bddSetVarToBeUngrouped ARGS((DdManager *dd, int index));
+int Cudd_bddIsVarToBeUngrouped ARGS((DdManager *dd, int index));
+int Cudd_bddIsVarHardGroup ARGS((DdManager *dd, int index));

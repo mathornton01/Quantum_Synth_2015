@@ -1,0 +1,53 @@
+# Makefile for Exorcism-4.7, March 15, 2002
+# Alan Mishchenko <alanmi@ee.pdx.edu>
+
+BASEDIR = /home/kfazel/school
+
+# modify these to point to your lib and include directory
+INC_DIRS = ${BASEDIR}/CUDD/cudd-2.4.1/include \
+	${BASEDIR}/tofExorcism4/extra14 \
+	${BASEDIR}/espresso-2.3.3/mincov \
+	${BASEDIR}/espresso-2.3.3/sparse \
+	${BASEDIR}/espresso-2.3.3/main
+
+LIB_DIRS = ${BASEDIR}/tofExorcism4/lib \
+	${BASEDIR}/CUDD/cudd-2.4.1/cudd \
+	${BASEDIR}/CUDD/cudd-2.4.1/st \
+	${BASEDIR}/CUDD/cudd-2.4.1/dddmp \
+	${BASEDIR}/CUDD/cudd-2.4.1/mtr \
+	${BASEDIR}/CUDD/cudd-2.4.1/util \
+	${BASEDIR}/CUDD/cudd-2.4.1/epd
+
+CC      = gcc
+CFLAGS  = -g -c 
+LFLAGS  = -g -lm
+
+INCLUDE = -I$(INC_DIR)
+CFILES  = exor.c exorBits.c exorCover.c exorCubes.c\
+	exorLink.c exorList.c exorReduce.c exorUtil.c
+
+LIBS    = extra cudd dddmp mtr st util epd
+
+NAME    = e
+
+.SILENT:
+
+all: PROJ
+
+OBJS = $(CFILES:.c=.o)
+
+.SUFFIXES: .o .c
+
+.c.o:
+	echo Compiling file $< ...
+	echo $(CC) $(CFLAGS) ${foreach inc, ${INC_DIRS}, -I${inc}} $<
+	$(CC) $(CFLAGS) ${foreach inc, ${INC_DIRS}, -I${inc}} $<
+
+PROJ: $(OBJS)
+	echo "Linking files"
+	echo $(CC) -o $(NAME) $(LFLAGS) $(OBJS) ${foreach libdir, ${LIB_DIRS}, -L${libdir}} ${foreach lib, $(LIBS), -l${lib}}
+	$(CC) -o $(NAME) $(LFLAGS) $(OBJS) ${foreach libdir, ${LIB_DIRS}, -L${libdir}} ${foreach lib, $(LIBS), -l${lib}}
+
+clean:
+	rm *.o
+
